@@ -1,14 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { CATEGORIES, CALCULATORS } from "../data/calculators";
-
-const CATEGORY_COLOR = {
-  Investment: "text-violet-400 bg-violet-500/10",
-  Savings: "text-emerald-400 bg-emerald-500/10",
-  Tax: "text-amber-400 bg-amber-500/10",
-  "Loans & EMI": "text-cyan-400 bg-cyan-500/10",
-  Trading: "text-fuchsia-400 bg-fuchsia-500/10",
-};
+import { CATEGORIES, CATEGORY_META, CALCULATORS, POPULAR_SLUGS } from "../data/calculators";
+import Icon from "../components/Icon";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -25,65 +18,142 @@ export default function Home() {
     });
   }, [query, category]);
 
+  const popular = CALCULATORS.filter((c) => POPULAR_SLUGS.includes(c.slug));
+  const showPopular = category === "All" && !query;
+
   return (
-    <div className="max-w-6xl mx-auto px-4 md:px-6 py-10">
-      <div className="text-xs uppercase tracking-widest text-violet-400 font-semibold mb-3">Free Tools</div>
-      <h1 className="text-3xl md:text-4xl font-bold text-gray-100 mb-3">Financial Calculators</h1>
-      <p className="text-gray-500 max-w-xl mb-8">
-        {CALCULATORS.length} free tools — SIP, EMI, tax, FD, and more. Run the numbers before you decide anything.
-        No account needed.
-      </p>
+    <div>
+      {/* Hero */}
+      <section className="max-w-6xl mx-auto px-4 md:px-6 pt-16 pb-10 text-center">
+        <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[var(--accent)] font-semibold bg-[var(--accent-soft)] border border-[var(--accent)]/25 rounded-full px-3 py-1 mb-6">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
+          Free Tools · No Account Needed
+        </div>
+        <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight mb-4">
+          <span className="bg-gradient-to-br from-white via-white to-[var(--text-secondary)] bg-clip-text text-transparent">
+            Money math,
+          </span>
+          <br />
+          <span className="bg-[var(--accent-gradient)] bg-clip-text text-transparent">sorted in seconds.</span>
+        </h1>
 
-      <input
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search calculators — SIP, EMI, Tax…"
-        className="w-full max-w-md bg-[#15161d] border border-[#2b2d3a] rounded-xl px-4 py-2.5 text-sm text-gray-100 placeholder-gray-600 mb-5 focus:outline-none focus:border-violet-500"
-      />
+        <div className="relative max-w-lg mx-auto mb-8 mt-9">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)]">
+            <Icon name="target" size={18} />
+          </span>
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search calculators — SIP, EMI, Tax…"
+            className="w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl pl-11 pr-4 py-3.5 text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent-soft)] transition-shadow"
+          />
+        </div>
 
-      <div className="flex flex-wrap gap-2 mb-8">
-        {CATEGORIES.map((c) => (
-          <button
-            key={c}
-            onClick={() => setCategory(c)}
-            className={`px-3.5 py-1.5 rounded-lg text-sm border transition-colors ${
-              category === c
-                ? "bg-violet-600 border-violet-500 text-white"
-                : "bg-[#15161d] border-[#2b2d3a] text-gray-400 hover:border-violet-500/50"
-            }`}
-          >
-            {c}
-          </button>
-        ))}
-        <span className="ml-auto text-sm text-gray-600 self-center">{filtered.length} calculators</span>
-      </div>
+        <div className="flex flex-wrap justify-center gap-2">
+          {CATEGORIES.map((c) => {
+            const meta = CATEGORY_META[c];
+            const active = category === c;
+            return (
+              <button
+                key={c}
+                onClick={() => setCategory(c)}
+                className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
+                  active
+                    ? "bg-[var(--text-primary)] text-[#0a0a0d] border-transparent"
+                    : "bg-[var(--surface)] border-[var(--border)] text-[var(--text-secondary)] hover:border-[var(--border-strong)] hover:text-[var(--text-primary)]"
+                }`}
+              >
+                {meta && <Icon name={meta.icon} size={15} />}
+                {c}
+              </button>
+            );
+          })}
+        </div>
+      </section>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filtered.map((c) => (
-          <Link
-            key={c.slug}
-            to={`/calculators/${c.slug}`}
-            className="group bg-[#15161d] border border-[#2b2d3a] rounded-2xl p-5 hover:border-violet-500/50 transition-colors flex flex-col"
-          >
-            <span
-              className={`text-[10px] uppercase tracking-wide font-semibold px-2 py-0.5 rounded-full w-fit mb-3 ${CATEGORY_COLOR[c.category]}`}
-            >
-              {c.category}
-            </span>
-            <div className="text-lg font-semibold text-gray-100 mb-1.5 group-hover:text-violet-300 transition-colors">
-              {c.title}
-            </div>
-            <p className="text-sm text-gray-500 flex-1">{c.description}</p>
-            <div className="text-sm text-violet-400 font-medium mt-4 flex items-center gap-1">
-              Calculate Now <span className="group-hover:translate-x-0.5 transition-transform">→</span>
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      {filtered.length === 0 && (
-        <div className="text-center text-gray-500 py-20">No calculators match "{query}".</div>
+      {/* Popular strip */}
+      {showPopular && (
+        <section className="max-w-6xl mx-auto px-4 md:px-6 pb-10">
+          <div className="text-sm font-semibold text-[var(--text-secondary)] mb-4 flex items-center gap-2">
+            <Icon name="trending-up" size={16} className="text-[var(--accent)]" />
+            Most Used
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+            {popular.map((c) => {
+              const meta = CATEGORY_META[c.category];
+              return (
+                <Link
+                  key={c.slug}
+                  to={`/calculators/${c.slug}`}
+                  className="group flex flex-col items-center text-center gap-2.5 bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 hover:border-[var(--border-strong)] hover:-translate-y-0.5 transition-all"
+                >
+                  <span
+                    className="w-10 h-10 rounded-xl flex items-center justify-center"
+                    style={{ background: `color-mix(in srgb, ${meta.color} 16%, transparent)`, color: meta.color }}
+                  >
+                    <Icon name={c.icon} size={18} />
+                  </span>
+                  <span className="text-xs font-medium text-[var(--text-primary)] leading-tight">{c.title}</span>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
       )}
+
+      {/* Grid */}
+      <section className="max-w-6xl mx-auto px-4 md:px-6 pb-20">
+        <div className="flex items-center justify-between mb-4">
+          <div className="text-sm font-semibold text-[var(--text-secondary)]">
+            {category === "All" ? "All Calculators" : category}
+          </div>
+          <div className="text-sm text-[var(--text-muted)]">{filtered.length} tools</div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filtered.map((c) => {
+            const meta = CATEGORY_META[c.category];
+            return (
+              <Link
+                key={c.slug}
+                to={`/calculators/${c.slug}`}
+                className="group relative overflow-hidden bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 hover:border-[var(--border-strong)] hover:-translate-y-0.5 transition-all flex flex-col"
+              >
+                <span
+                  className="absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                  style={{ background: meta.color }}
+                />
+                <div className="flex items-center justify-between mb-4">
+                  <span
+                    className="w-11 h-11 rounded-xl flex items-center justify-center"
+                    style={{ background: `color-mix(in srgb, ${meta.color} 16%, transparent)`, color: meta.color }}
+                  >
+                    <Icon name={c.icon} size={20} />
+                  </span>
+                  <span
+                    className="text-[10px] uppercase tracking-wide font-semibold px-2 py-0.5 rounded-full"
+                    style={{ background: `color-mix(in srgb, ${meta.color} 14%, transparent)`, color: meta.color }}
+                  >
+                    {c.category}
+                  </span>
+                </div>
+                <div className="text-lg font-semibold text-[var(--text-primary)] mb-1.5 group-hover:text-[var(--accent)] transition-colors font-display">
+                  {c.title}
+                </div>
+                <p className="text-sm text-[var(--text-secondary)] flex-1 leading-relaxed">{c.description}</p>
+                <div className="text-sm text-[var(--accent)] font-medium mt-4 flex items-center gap-1">
+                  Calculate Now
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+
+        {filtered.length === 0 && (
+          <div className="text-center text-[var(--text-muted)] py-20">No calculators match "{query}".</div>
+        )}
+      </section>
     </div>
   );
 }

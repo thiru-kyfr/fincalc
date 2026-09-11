@@ -21,9 +21,9 @@ export default function NscCalculator() {
       description={`Calculate maturity value under the National Savings Certificate scheme — ${RATE}% p.a., compounded annually over a fixed ${TENURE_YEARS}-year tenure.`}
       inputs={
         <>
-          <div className="mb-6 rounded-lg bg-[#1a1b23] border border-[#2b2d3a] px-3 py-2.5 text-sm">
-            <span className="text-gray-400">Current NSC Interest Rate</span>
-            <div className="text-violet-300 font-semibold">{RATE}% p.a. · {TENURE_YEARS}-yr lock-in</div>
+          <div className="mb-6 rounded-lg bg-[var(--surface-2)] border border-[var(--border)] px-3 py-2.5 text-sm">
+            <span className="text-[var(--text-secondary)]">Current NSC Interest Rate</span>
+            <div className="text-[var(--accent)] font-semibold">{RATE}% p.a. · {TENURE_YEARS}-yr lock-in</div>
           </div>
           <SliderInput label="Investment Amount" value={amount} min={1000} max={10000000} step={1000} prefix="₹" onChange={setAmount} />
         </>

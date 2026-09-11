@@ -55,7 +55,7 @@ export default function InflationCalculator() {
           highlight
         />
       </div>
-      <GrowthChart title="Value Over Time" series={result.series} lines={[{ key: "value", name: "Value", color: "#8b5cf6" }]} />
+      <GrowthChart title="Value Over Time" series={result.series} lines={[{ key: "value", name: "Value", color: "var(--accent)" }]} />
     </CalculatorShell>
   );
 }

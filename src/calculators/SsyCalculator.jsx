@@ -42,9 +42,9 @@ export default function SsyCalculator() {
       description={`Calculate maturity value for a Sukanya Samriddhi Yojana account at ${RATE}% p.a. — deposits for ${CONTRIBUTION_YEARS} years, maturing after ${MATURITY_YEARS} years.`}
       inputs={
         <>
-          <div className="mb-6 rounded-lg bg-[#1a1b23] border border-[#2b2d3a] px-3 py-2.5 text-sm">
-            <span className="text-gray-400">Current SSY Interest Rate</span>
-            <div className="text-violet-300 font-semibold">{RATE}% p.a.</div>
+          <div className="mb-6 rounded-lg bg-[var(--surface-2)] border border-[var(--border)] px-3 py-2.5 text-sm">
+            <span className="text-[var(--text-secondary)]">Current SSY Interest Rate</span>
+            <div className="text-[var(--accent)] font-semibold">{RATE}% p.a.</div>
           </div>
           <SliderInput label="Yearly Investment" value={yearly} min={250} max={150000} step={250} prefix="₹" onChange={setYearly} />
           <SliderInput label="Girl's Current Age" value={girlAge} min={0} max={10} step={1} suffix=" yrs" onChange={setGirlAge} />
@@ -63,7 +63,7 @@ export default function SsyCalculator() {
           { label: "Returns", value: interest },
         ]}
       />
-      <GrowthChart title="Year-wise Growth" series={series} lines={[{ key: "balance", name: "Balance", color: "#8b5cf6" }]} />
+      <GrowthChart title="Year-wise Growth" series={series} lines={[{ key: "balance", name: "Balance", color: "var(--accent)" }]} />
       <DataTable
         title="Year-wise Breakdown"
         columns={["Year", "Age", "Deposit", "Interest", "Balance"]}

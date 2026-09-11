@@ -77,7 +77,7 @@ export default function EpfCalculator() {
           { label: "Interest", value: Math.max(0, interest) },
         ]}
       />
-      <GrowthChart title="Corpus Growth" series={result.series} lines={[{ key: "balance", name: "Balance", color: "#8b5cf6" }]} />
+      <GrowthChart title="Corpus Growth" series={result.series} lines={[{ key: "balance", name: "Balance", color: "var(--accent)" }]} />
     </CalculatorShell>
   );
 }

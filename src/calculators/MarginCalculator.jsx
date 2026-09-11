@@ -43,7 +43,7 @@ export default function MarginCalculator() {
         <StatCard label="Margin Required" value={formatCompact(result.marginRequired)} highlight />
         <StatCard label="Effective Leverage" value={`${result.leverage.toFixed(1)}x`} />
       </div>
-      <div className="bg-[#15161d] border border-[#2b2d3a] rounded-xl p-5 text-sm text-gray-400">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-5 text-sm text-[var(--text-secondary)]">
         {result.s.label}: {result.s.note}. Actual margin varies by broker, stock volatility (VaR + ELM) and SPAN
         requirements — treat this as an estimate.
       </div>

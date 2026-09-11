@@ -42,11 +42,11 @@ export default function ApyCalculator() {
         <StatCard label="Contribution Period" value={`${result.months} months (till 60)`} />
         <StatCard label="Total Contribution" value={formatCompact(result.totalContribution)} />
       </div>
-      <div className="bg-[#15161d] border border-[#2b2d3a] rounded-xl p-5 text-sm text-gray-400">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-5 text-sm text-[var(--text-secondary)]">
         On reaching 60, you'll receive a guaranteed pension of{" "}
-        <span className="text-gray-100 font-medium">₹{pension.toLocaleString("en-IN")}/month</span> for life. On death,
+        <span className="text-[var(--text-primary)] font-medium">₹{pension.toLocaleString("en-IN")}/month</span> for life. On death,
         your spouse or nominee receives the return-of-corpus amount of{" "}
-        <span className="text-gray-100 font-medium">{formatCompact(result.returnCorpus)}</span>.
+        <span className="text-[var(--text-primary)] font-medium">{formatCompact(result.returnCorpus)}</span>.
       </div>
     </CalculatorShell>
   );

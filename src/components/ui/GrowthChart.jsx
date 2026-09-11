@@ -20,13 +20,18 @@ export default function GrowthChart({ series, lines, title = "Year-wise Growth" 
 
   const yTicks = 4;
 
+  const primary = lines[lines.length - 1];
+  const areaPoints = series.map((s, i) => `${x(i)},${y(primary ? s[primary.key] || 0 : 0)}`).join(" ");
+  const areaPath = `M${padL},${height - padB} L${areaPoints} L${x(n - 1)},${height - padB} Z`;
+  const gradId = `growth-fill-${title.replace(/\s+/g, "")}`;
+
   return (
-    <div className="bg-[#15161d] border border-[#2b2d3a] rounded-xl p-5">
+    <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5">
       <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-        <div className="text-[11px] uppercase tracking-wide text-gray-500">{title}</div>
+        <div className="text-[11px] uppercase tracking-wide text-[var(--text-muted)] font-semibold">{title}</div>
         <div className="flex gap-4">
           {lines.map((l) => (
-            <div key={l.key} className="flex items-center gap-1.5 text-xs text-gray-400">
+            <div key={l.key} className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
               <span className="w-2.5 h-2.5 rounded-sm inline-block" style={{ background: l.color }} />
               {l.name}
             </div>
@@ -35,6 +40,12 @@ export default function GrowthChart({ series, lines, title = "Year-wise Growth" 
       </div>
       <div className="overflow-x-auto">
         <svg width="100%" viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" style={{ minWidth: 480 }}>
+          <defs>
+            <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={primary?.color || "#8b7cff"} stopOpacity="0.28" />
+              <stop offset="100%" stopColor={primary?.color || "#8b7cff"} stopOpacity="0" />
+            </linearGradient>
+          </defs>
           {Array.from({ length: yTicks + 1 }).map((_, i) => {
             const v = (maxVal / yTicks) * i;
             return (
@@ -44,7 +55,7 @@ export default function GrowthChart({ series, lines, title = "Year-wise Growth" 
                   x2={width - padR}
                   y1={y(v)}
                   y2={y(v)}
-                  stroke="#22232e"
+                  stroke="var(--surface-3)"
                   strokeWidth="1"
                 />
                 <text x={4} y={y(v) + 4} fontSize="10" fill="#6b7280">
@@ -53,9 +64,20 @@ export default function GrowthChart({ series, lines, title = "Year-wise Growth" 
               </g>
             );
           })}
+          {primary && <path d={areaPath} fill={`url(#${gradId})`} stroke="none" />}
           {lines.map((l) => {
             const points = series.map((s, i) => `${x(i)},${y(s[l.key] || 0)}`).join(" ");
-            return <polyline key={l.key} points={points} fill="none" stroke={l.color} strokeWidth="2.5" />;
+            return (
+              <polyline
+                key={l.key}
+                points={points}
+                fill="none"
+                stroke={l.color}
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            );
           })}
           {series.map((s, i) => {
             if (n > 12 && i % Math.ceil(n / 8) !== 0 && i !== n - 1) return null;

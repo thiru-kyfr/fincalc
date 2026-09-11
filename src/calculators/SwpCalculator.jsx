@@ -75,7 +75,7 @@ export default function SwpCalculator() {
       <GrowthChart
         title="Balance Over Time"
         series={series}
-        lines={[{ key: "balance", name: "Balance", color: "#8b5cf6" }]}
+        lines={[{ key: "balance", name: "Balance", color: "var(--accent)" }]}
       />
       <DataTable
         title="Year-wise Withdrawal"

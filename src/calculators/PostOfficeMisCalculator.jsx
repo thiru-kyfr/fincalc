@@ -23,9 +23,9 @@ export default function PostOfficeMisCalculator() {
       description={`Calculate monthly income from a Post Office Monthly Income Scheme deposit at ${RATE}% p.a. over a ${TENURE_YEARS}-year tenure.`}
       inputs={
         <>
-          <div className="mb-6 rounded-lg bg-[#1a1b23] border border-[#2b2d3a] px-3 py-2.5 text-sm">
-            <span className="text-gray-400">Current POMIS Interest Rate</span>
-            <div className="text-violet-300 font-semibold">{RATE}% p.a. · {TENURE_YEARS}-yr tenure</div>
+          <div className="mb-6 rounded-lg bg-[var(--surface-2)] border border-[var(--border)] px-3 py-2.5 text-sm">
+            <span className="text-[var(--text-secondary)]">Current POMIS Interest Rate</span>
+            <div className="text-[var(--accent)] font-semibold">{RATE}% p.a. · {TENURE_YEARS}-yr tenure</div>
           </div>
           <SliderInput label="Deposit Amount" value={investment} min={1000} max={1500000} step={1000} prefix="₹" onChange={setInvestment} />
         </>
@@ -36,7 +36,7 @@ export default function PostOfficeMisCalculator() {
         <StatCard label="Monthly Income" value={formatCompact(result.monthlyIncome)} highlight />
         <StatCard label="Total Interest (5 yrs)" value={formatCompact(result.totalInterest)} />
       </div>
-      <div className="bg-[#15161d] border border-[#2b2d3a] rounded-xl p-5 text-sm text-gray-400">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-5 text-sm text-[var(--text-secondary)]">
         Max deposit is ₹9,00,000 for a single account and ₹15,00,000 for a joint account. Principal is returned in
         full at maturity.
       </div>

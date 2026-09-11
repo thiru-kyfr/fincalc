@@ -57,7 +57,7 @@ export default function SipCalculator() {
         series={result.series}
         lines={[
           { key: "invested", name: "Invested", color: "#22d3ee" },
-          { key: "total", name: "Total Value", color: "#8b5cf6" },
+          { key: "total", name: "Total Value", color: "var(--accent)" },
         ]}
       />
     </CalculatorShell>

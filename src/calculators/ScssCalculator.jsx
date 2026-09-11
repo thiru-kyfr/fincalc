@@ -23,9 +23,9 @@ export default function ScssCalculator() {
       description={`Calculate quarterly payouts under the Senior Citizens Savings Scheme at ${RATE}% p.a. over a ${TENURE_YEARS}-year tenure.`}
       inputs={
         <>
-          <div className="mb-6 rounded-lg bg-[#1a1b23] border border-[#2b2d3a] px-3 py-2.5 text-sm">
-            <span className="text-gray-400">Current SCSS Interest Rate</span>
-            <div className="text-violet-300 font-semibold">{RATE}% p.a. · {TENURE_YEARS}-yr tenure</div>
+          <div className="mb-6 rounded-lg bg-[var(--surface-2)] border border-[var(--border)] px-3 py-2.5 text-sm">
+            <span className="text-[var(--text-secondary)]">Current SCSS Interest Rate</span>
+            <div className="text-[var(--accent)] font-semibold">{RATE}% p.a. · {TENURE_YEARS}-yr tenure</div>
           </div>
           <SliderInput label="Deposit Amount" value={investment} min={1000} max={3000000} step={1000} prefix="₹" onChange={setInvestment} />
         </>
@@ -36,7 +36,7 @@ export default function ScssCalculator() {
         <StatCard label="Quarterly Payout" value={formatCompact(result.quarterlyPayout)} highlight />
         <StatCard label="Total Interest (5 yrs)" value={formatCompact(result.totalInterest)} />
       </div>
-      <div className="bg-[#15161d] border border-[#2b2d3a] rounded-xl p-5 text-sm text-gray-400">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-5 text-sm text-[var(--text-secondary)]">
         Max deposit is ₹30,00,000. Extendable in blocks of 3 years after maturity.
       </div>
     </CalculatorShell>

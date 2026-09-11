@@ -52,9 +52,9 @@ export default function FlatVsReducingCalculator() {
           ["Total Payment", formatCurrency(result.flatTotalPayment), formatCurrency(result.reducingTotalPayment)],
         ]}
       />
-      <div className="bg-[#15161d] border border-[#2b2d3a] rounded-xl p-5 text-sm text-gray-400">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-5 text-sm text-[var(--text-secondary)]">
         A flat rate of {rate}% works out to an effective reducing-balance rate of roughly{" "}
-        <span className="text-gray-100 font-medium">{formatPercent(result.effectiveFlatRate, 1)}</span> — flat-rate
+        <span className="text-[var(--text-primary)] font-medium">{formatPercent(result.effectiveFlatRate, 1)}</span> — flat-rate
         loans always cost more than their quoted rate suggests.
       </div>
     </CalculatorShell>

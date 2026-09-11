@@ -32,7 +32,7 @@ export default function IncomeTaxCalculator() {
             ]}
           />
           <SliderInput label="Annual Income (Gross)" value={income} min={0} max={5000000} step={10000} prefix="₹" onChange={setIncome} />
-          <div className="text-xs text-gray-500 -mt-3 mb-4">
+          <div className="text-xs text-[var(--text-muted)] -mt-3 mb-4">
             Std. deduction {formatCurrency(result.stdDeduction)} applied
             {result.rebate > 0 && " · 87A rebate applied"}
           </div>
@@ -61,7 +61,7 @@ export default function IncomeTaxCalculator() {
         ])}
       />
       {result.rebate > 0 && (
-        <div className="bg-[#15161d] border border-[#2b2d3a] rounded-xl p-5 text-sm text-gray-400">
+        <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-5 text-sm text-[var(--text-secondary)]">
           Rebate u/s 87A: −{formatCurrency(result.rebate)} → Tax after rebate: {formatCurrency(result.taxAfterRebate)} + Cess: {formatCurrency(result.cess)}
         </div>
       )}

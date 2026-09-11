@@ -45,7 +45,7 @@ export default function TdsCalculator() {
         <StatCard label="TDS Amount" value={formatCompact(result.tds)} highlight />
         <StatCard label="Net Payment" value={formatCompact(result.netPayment)} />
       </div>
-      <div className="bg-[#15161d] border border-[#2b2d3a] rounded-xl p-5 text-sm text-gray-400">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-5 text-sm text-[var(--text-secondary)]">
         Threshold for {result.s.label}: {formatCurrency(result.s.threshold)}.{" "}
         {result.applicable
           ? "Payment exceeds threshold — TDS is applicable."

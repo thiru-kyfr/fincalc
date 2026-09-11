@@ -26,9 +26,9 @@ export default function SliderInput({
   return (
     <div className="mb-6">
       <div className="flex items-center justify-between mb-2">
-        <label className="text-sm text-gray-400">{label}</label>
-        <div className="flex items-center bg-[#1a1b23] border border-[#2b2d3a] rounded-lg px-3 py-1">
-          <span className="text-sm font-semibold text-violet-300">{display}</span>
+        <label className="text-sm text-[var(--text-secondary)]">{label}</label>
+        <div className="flex items-center bg-[var(--surface-2)] border border-[var(--border)] rounded-lg px-3 py-1">
+          <span className="text-sm font-semibold text-[var(--accent)]">{display}</span>
         </div>
       </div>
       <input
@@ -40,7 +40,7 @@ export default function SliderInput({
         onChange={(e) => onChange(Number(e.target.value))}
         style={{ "--fill": `${pct}%` }}
       />
-      <div className="flex justify-between text-xs text-gray-500 mt-1">
+      <div className="flex justify-between text-xs text-[var(--text-muted)] mt-1">
         <span>
           {prefix}
           {formatIndianNumber(min)}

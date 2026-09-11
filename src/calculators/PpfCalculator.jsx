@@ -27,10 +27,10 @@ export default function PpfCalculator() {
       description={`Calculate your Public Provident Fund maturity value at the current rate of ${RATE}% p.a., compounded annually and tax-free under EEE.`}
       inputs={
         <>
-          <div className="mb-6 rounded-lg bg-[#1a1b23] border border-[#2b2d3a] px-3 py-2.5 text-sm">
-            <span className="text-gray-400">Current PPF Interest Rate</span>
-            <div className="text-violet-300 font-semibold">{RATE}% p.a.</div>
-            <div className="text-xs text-gray-500 mt-0.5">Compounded annually · Tax-free under EEE</div>
+          <div className="mb-6 rounded-lg bg-[var(--surface-2)] border border-[var(--border)] px-3 py-2.5 text-sm">
+            <span className="text-[var(--text-secondary)]">Current PPF Interest Rate</span>
+            <div className="text-[var(--accent)] font-semibold">{RATE}% p.a.</div>
+            <div className="text-xs text-[var(--text-muted)] mt-0.5">Compounded annually · Tax-free under EEE</div>
           </div>
           <SliderInput label="Yearly Investment" value={yearly} min={500} max={150000} step={500} prefix="₹" onChange={setYearly} />
           <SliderInput label="Investment Period" value={years} min={15} max={50} step={1} suffix=" yrs" onChange={setYears} />
@@ -49,7 +49,7 @@ export default function PpfCalculator() {
           { label: "Returns", value: interest },
         ]}
       />
-      <GrowthChart title="Year-wise Growth" series={series} lines={[{ key: "balance", name: "Balance", color: "#8b5cf6" }]} />
+      <GrowthChart title="Year-wise Growth" series={series} lines={[{ key: "balance", name: "Balance", color: "var(--accent)" }]} />
       <DataTable
         title="Year-wise Breakdown"
         columns={["Year", "Deposit", "Interest", "Balance"]}

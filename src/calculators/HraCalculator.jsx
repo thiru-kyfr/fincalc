@@ -46,7 +46,7 @@ export default function HraCalculator() {
           { label: "Taxable", value: result.taxableHra },
         ]}
       />
-      <div className="bg-[#15161d] border border-[#2b2d3a] rounded-xl p-5 text-sm text-gray-400 space-y-1">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-5 text-sm text-[var(--text-secondary)] space-y-1">
         <div>Exemption is the least of:</div>
         <div>• Actual HRA received: {formatCompact(result.a)}</div>
         <div>• Rent paid − 10% of Basic+DA: {formatCompact(result.b)}</div>
