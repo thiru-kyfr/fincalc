@@ -27,9 +27,7 @@ const PATHS = {
   "plus-circle": <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM12 8v8M8 12h8" />,
   layers: <path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" />,
   scale: <path d="M12 3v18M7 7H2l3.5 7a3 3 0 0 0 5 0L7 7Zm10 0h5l-3.5 7a3 3 0 0 1-5 0L17 7ZM7 7l5-2 5 2M6 21h12" />,
-  "bar-chart": <path d="M4 20V10m6 10V4m6 16v-7" />,
   sliders: <path d="M4 6h9M17 6h3M4 18h3M11 18h9M4 6a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm4 12a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm9-12a2 2 0 1 1 4 0 2 2 0 0 1-4 0Z" />,
-  layers2: <path d="M3 6h4v4H3V6Zm7 0h4v4h-4V6Zm7 0h4v4h-4V6ZM3 14h4v4H3v-4Zm7 0h4v4h-4v-4Zm7 0h4v4h-4v-4Z" />,
 };
 
 export default function Icon({ name, className = "", size = 20, style }) {

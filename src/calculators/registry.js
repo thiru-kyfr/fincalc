@@ -22,7 +22,6 @@ import RetirementCalculator from "./RetirementCalculator";
 import IncomeTaxCalculator from "./IncomeTaxCalculator";
 import HraCalculator from "./HraCalculator";
 import TdsCalculator from "./TdsCalculator";
-import GstCalculator from "./GstCalculator";
 import GratuityCalculator from "./GratuityCalculator";
 import SalaryCalculator from "./SalaryCalculator";
 
@@ -33,10 +32,6 @@ import SimpleInterestCalculator from "./SimpleInterestCalculator";
 import CompoundInterestCalculator from "./CompoundInterestCalculator";
 import FlatVsReducingCalculator from "./FlatVsReducingCalculator";
 import InflationCalculator from "./InflationCalculator";
-
-import BrokerageCalculator from "./BrokerageCalculator";
-import MarginCalculator from "./MarginCalculator";
-import StockAverageCalculator from "./StockAverageCalculator";
 
 export const CALCULATOR_COMPONENTS = {
   sip: SipCalculator,
@@ -63,7 +58,6 @@ export const CALCULATOR_COMPONENTS = {
   "income-tax": IncomeTaxCalculator,
   hra: HraCalculator,
   tds: TdsCalculator,
-  gst: GstCalculator,
   gratuity: GratuityCalculator,
   salary: SalaryCalculator,
 
@@ -74,8 +68,4 @@ export const CALCULATOR_COMPONENTS = {
   "compound-interest": CompoundInterestCalculator,
   "flat-vs-reducing": FlatVsReducingCalculator,
   inflation: InflationCalculator,
-
-  brokerage: BrokerageCalculator,
-  margin: MarginCalculator,
-  "stock-average": StockAverageCalculator,
 };

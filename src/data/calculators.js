@@ -1,11 +1,10 @@
-export const CATEGORIES = ["All", "Investment", "Savings", "Tax", "Loans & EMI", "Trading"];
+export const CATEGORIES = ["All", "Investment", "Savings", "Tax", "Loans & EMI"];
 
 export const CATEGORY_META = {
   Investment: { color: "var(--cat-investment)", icon: "trending-up" },
   Savings: { color: "var(--cat-savings)", icon: "shield" },
   Tax: { color: "var(--cat-tax)", icon: "receipt" },
   "Loans & EMI": { color: "var(--cat-loans)", icon: "calculator" },
-  Trading: { color: "var(--cat-trading)", icon: "bar-chart" },
 };
 
 export const CALCULATORS = [
@@ -36,7 +35,6 @@ export const CALCULATORS = [
   { slug: "income-tax", title: "Income Tax Calculator", category: "Tax", icon: "receipt", description: "Compare new vs old regime tax liability for FY 2025-26 in seconds." },
   { slug: "hra", title: "HRA Calculator", category: "Tax", icon: "home", description: "Work out how much of your House Rent Allowance is tax exempt." },
   { slug: "tds", title: "TDS Calculator", category: "Tax", icon: "scissors", description: "Estimate TDS deduction across common payment types and sections." },
-  { slug: "gst", title: "GST Calculator", category: "Tax", icon: "percent", description: "Add or remove GST from an amount at any of the standard slab rates." },
   { slug: "gratuity", title: "Gratuity Calculator", category: "Tax", icon: "gift", description: "Calculate the gratuity payout you're entitled to on leaving a job." },
   { slug: "salary", title: "Salary Calculator", category: "Tax", icon: "wallet", description: "Break down your CTC into take-home pay, deductions and tax." },
 
@@ -48,11 +46,6 @@ export const CALCULATORS = [
   { slug: "compound-interest", title: "Compound Interest Calculator", category: "Loans & EMI", icon: "layers", description: "Calculate compound interest for any compounding frequency." },
   { slug: "flat-vs-reducing", title: "Flat vs Reducing Rate", category: "Loans & EMI", icon: "scale", description: "See the real cost difference between flat-rate and reducing-balance EMIs." },
   { slug: "inflation", title: "Inflation Calculator", category: "Loans & EMI", icon: "trending-up", description: "See how inflation erodes purchasing power, or inflates future cost." },
-
-  // Trading
-  { slug: "brokerage", title: "Brokerage Calculator", category: "Trading", icon: "bar-chart", description: "Break down brokerage, STT, and other charges on a stock trade." },
-  { slug: "margin", title: "Margin Calculator", category: "Trading", icon: "sliders", description: "Estimate margin required for delivery, intraday, and F&O trades." },
-  { slug: "stock-average", title: "Stock Average Calculator", category: "Trading", icon: "layers2", description: "Calculate your average buy price across multiple purchases." },
 ];
 
-export const POPULAR_SLUGS = ["sip", "emi", "income-tax", "ppf", "gst", "fd"];
+export const POPULAR_SLUGS = ["sip", "emi", "income-tax", "ppf", "fd", "cagr"];
