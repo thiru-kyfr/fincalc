@@ -1,9 +1,19 @@
 import { useParams, Link } from "react-router-dom";
 import { CALCULATOR_COMPONENTS } from "../calculators/registry";
+import { CALCULATORS } from "../data/calculators";
+import { useMeta } from "../hooks/useMeta";
 
 export default function CalculatorPage() {
   const { slug } = useParams();
   const Component = CALCULATOR_COMPONENTS[slug];
+  const calc = CALCULATORS.find((c) => c.slug === slug);
+
+  useMeta({
+    title: calc ? calc.title : "Calculator Not Found",
+    description: calc ? calc.description : "The calculator you're looking for doesn't exist.",
+    path: `/calculators/${slug}`,
+    noindex: !calc,
+  });
 
   if (!Component) {
     return (

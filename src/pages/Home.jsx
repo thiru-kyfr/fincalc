@@ -2,8 +2,15 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { CATEGORIES, CATEGORY_META, CALCULATORS, POPULAR_SLUGS } from "../data/calculators";
 import Icon from "../components/Icon";
+import { useMeta } from "../hooks/useMeta";
 
 export default function Home() {
+  useMeta({
+    title: null,
+    description: "Ktools — 31 free financial calculators for India. SIP, EMI, tax, FD, PPF and more.",
+    path: "/",
+  });
+
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
 
