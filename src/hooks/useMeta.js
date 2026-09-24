@@ -40,6 +40,8 @@ function setJsonLd(data) {
 }
 
 export function useMeta({ title, description, path, noindex = false, jsonLd = null }) {
+  const jsonLdKey = JSON.stringify(jsonLd);
+
   useEffect(() => {
     const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} — Financial Calculators`;
     const url = `${SITE_URL}${path}`;
@@ -71,5 +73,6 @@ export function useMeta({ title, description, path, noindex = false, jsonLd = nu
     }
 
     setJsonLd(jsonLd);
-  }, [title, description, path, noindex, JSON.stringify(jsonLd)]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [title, description, path, noindex, jsonLdKey]);
 }

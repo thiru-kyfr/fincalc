@@ -1,12 +1,15 @@
 import { useParams, Link } from "react-router-dom";
 import { CALCULATOR_COMPONENTS } from "../calculators/registry";
 import { CALCULATORS } from "../data/calculators";
+import { CALCULATOR_CONTENT } from "../data/calculatorContent";
 import { useMeta, SITE_URL } from "../hooks/useMeta";
+import CalculatorContent from "../components/ui/CalculatorContent";
 
 export default function CalculatorPage() {
   const { slug } = useParams();
   const Component = CALCULATOR_COMPONENTS[slug];
   const calc = CALCULATORS.find((c) => c.slug === slug);
+  const content = CALCULATOR_CONTENT[slug];
   const url = `${SITE_URL}/calculators/${slug}`;
 
   useMeta({
@@ -38,6 +41,18 @@ export default function CalculatorPage() {
             { "@type": "ListItem", position: 2, name: calc.title, item: url },
           ],
         },
+        ...(content?.faqs?.length
+          ? [
+              {
+                "@type": "FAQPage",
+                mainEntity: content.faqs.map((f) => ({
+                  "@type": "Question",
+                  name: f.q,
+                  acceptedAnswer: { "@type": "Answer", text: f.a },
+                })),
+              },
+            ]
+          : []),
       ],
     },
   });
@@ -54,5 +69,10 @@ export default function CalculatorPage() {
     );
   }
 
-  return <Component />;
+  return (
+    <>
+      <Component />
+      <CalculatorContent {...content} />
+    </>
+  );
 }
