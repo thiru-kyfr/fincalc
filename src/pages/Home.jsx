@@ -2,13 +2,33 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { CATEGORIES, CATEGORY_META, CALCULATORS, POPULAR_SLUGS } from "../data/calculators";
 import Icon from "../components/Icon";
-import { useMeta } from "../hooks/useMeta";
+import { useMeta, SITE_URL } from "../hooks/useMeta";
 
 export default function Home() {
   useMeta({
     title: null,
     description: "Ktools — 31 free financial calculators for India. SIP, EMI, tax, FD, PPF and more.",
     path: "/",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          name: "Ktools",
+          url: SITE_URL,
+          description: "31 free financial calculators for India — SIP, EMI, tax, FD, PPF and more.",
+        },
+        {
+          "@type": "ItemList",
+          itemListElement: CALCULATORS.map((c, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: c.title,
+            url: `${SITE_URL}/calculators/${c.slug}`,
+          })),
+        },
+      ],
+    },
   });
 
   const [query, setQuery] = useState("");

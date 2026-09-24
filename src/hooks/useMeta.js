@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const SITE_URL = "https://fincalc-red.vercel.app";
+export const SITE_URL = "https://fincalc-red.vercel.app";
 const SITE_NAME = "Ktools";
 
 function setMetaTag(attr, key, content) {
@@ -24,7 +24,22 @@ function setCanonical(href) {
   el.setAttribute("href", href);
 }
 
-export function useMeta({ title, description, path, noindex = false }) {
+function setJsonLd(data) {
+  let el = document.querySelector('script[data-managed="json-ld"]');
+  if (!data) {
+    if (el) el.remove();
+    return;
+  }
+  if (!el) {
+    el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.setAttribute("data-managed", "json-ld");
+    document.head.appendChild(el);
+  }
+  el.textContent = JSON.stringify(data);
+}
+
+export function useMeta({ title, description, path, noindex = false, jsonLd = null }) {
   useEffect(() => {
     const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} — Financial Calculators`;
     const url = `${SITE_URL}${path}`;
@@ -54,5 +69,7 @@ export function useMeta({ title, description, path, noindex = false }) {
     } else if (robotsEl) {
       robotsEl.remove();
     }
-  }, [title, description, path, noindex]);
+
+    setJsonLd(jsonLd);
+  }, [title, description, path, noindex, JSON.stringify(jsonLd)]);
 }

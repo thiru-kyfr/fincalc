@@ -1,18 +1,45 @@
 import { useParams, Link } from "react-router-dom";
 import { CALCULATOR_COMPONENTS } from "../calculators/registry";
 import { CALCULATORS } from "../data/calculators";
-import { useMeta } from "../hooks/useMeta";
+import { useMeta, SITE_URL } from "../hooks/useMeta";
 
 export default function CalculatorPage() {
   const { slug } = useParams();
   const Component = CALCULATOR_COMPONENTS[slug];
   const calc = CALCULATORS.find((c) => c.slug === slug);
+  const url = `${SITE_URL}/calculators/${slug}`;
 
   useMeta({
     title: calc ? calc.title : "Calculator Not Found",
     description: calc ? calc.description : "The calculator you're looking for doesn't exist.",
     path: `/calculators/${slug}`,
     noindex: !calc,
+    jsonLd: calc && {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          name: calc.title,
+          description: calc.description,
+          url,
+          applicationCategory: "FinanceApplication",
+          operatingSystem: "Web",
+          isAccessibleForFree: true,
+          offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "INR",
+          },
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Calculators", item: `${SITE_URL}/` },
+            { "@type": "ListItem", position: 2, name: calc.title, item: url },
+          ],
+        },
+      ],
+    },
   });
 
   if (!Component) {
