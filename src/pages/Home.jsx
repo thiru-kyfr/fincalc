@@ -49,12 +49,12 @@ export default function Home() {
   const showPopular = category === "All" && !query;
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative isolate overflow-hidden">
       <img
         src="/logo.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none select-none absolute -right-16 -top-6 w-[340px] h-[340px] opacity-[0.05] grayscale contrast-125 -z-10"
+        className="pointer-events-none select-none absolute left-1/2 -translate-x-1/2 top-40 w-[340px] h-[340px] opacity-[0.05] grayscale brightness-[3] -z-10"
       />
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 md:px-6 pt-16 pb-10 text-center">
