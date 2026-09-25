@@ -42,8 +42,8 @@ export default function GrowthChart({ series, lines, title = "Year-wise Growth" 
         <svg width="100%" viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" style={{ minWidth: 480 }}>
           <defs>
             <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={primary?.color || "#8b7cff"} stopOpacity="0.28" />
-              <stop offset="100%" stopColor={primary?.color || "#8b7cff"} stopOpacity="0" />
+              <stop offset="0%" stopColor={primary?.color || "#9f5fe5"} stopOpacity="0.28" />
+              <stop offset="100%" stopColor={primary?.color || "#9f5fe5"} stopOpacity="0" />
             </linearGradient>
           </defs>
           {Array.from({ length: yTicks + 1 }).map((_, i) => {
@@ -58,7 +58,7 @@ export default function GrowthChart({ series, lines, title = "Year-wise Growth" 
                   stroke="var(--surface-3)"
                   strokeWidth="1"
                 />
-                <text x={4} y={y(v) + 4} fontSize="10" fill="#6b7280">
+                <text x={4} y={y(v) + 4} fontSize="10" fill="#6f6878">
                   {formatCompact(v)}
                 </text>
               </g>
@@ -82,7 +82,7 @@ export default function GrowthChart({ series, lines, title = "Year-wise Growth" 
           {series.map((s, i) => {
             if (n > 12 && i % Math.ceil(n / 8) !== 0 && i !== n - 1) return null;
             return (
-              <text key={i} x={x(i)} y={height - 4} fontSize="10" fill="#6b7280" textAnchor="middle">
+              <text key={i} x={x(i)} y={height - 4} fontSize="10" fill="#6f6878" textAnchor="middle">
                 {s.label}
               </text>
             );

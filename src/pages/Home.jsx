@@ -86,7 +86,7 @@ export default function Home() {
                 onClick={() => setCategory(c)}
                 className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
                   active
-                    ? "bg-[var(--text-primary)] text-[#0a0a0d] border-transparent"
+                    ? "bg-[var(--text-primary)] text-[#141414] border-transparent"
                     : "bg-[var(--surface)] border-[var(--border)] text-[var(--text-secondary)] hover:border-[var(--border-strong)] hover:text-[var(--text-primary)]"
                 }`}
               >

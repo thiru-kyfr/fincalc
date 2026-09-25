@@ -1,6 +1,6 @@
 import { formatCompact } from "../../lib/format";
 
-const COLORS = ["var(--accent)", "#22d3ee", "#f472b6", "#facc15", "#34d399"];
+const COLORS = ["var(--accent)", "var(--gold)", "var(--accent-2)", "var(--safe)", "#38bdf8"];
 
 export default function Donut({ segments, title = "Breakdown" }) {
   const total = segments.reduce((s, x) => s + Math.max(0, x.value), 0) || 1;

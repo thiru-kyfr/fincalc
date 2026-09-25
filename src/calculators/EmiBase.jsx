@@ -63,8 +63,8 @@ export default function EmiBase({ title, description, defaults }) {
         title="Year-wise Principal vs Interest"
         series={result.series}
         lines={[
-          { key: "principal", name: "Principal", color: "#22d3ee" },
-          { key: "interest", name: "Interest", color: "#f472b6" },
+          { key: "principal", name: "Principal", color: "#ffc24b" },
+          { key: "interest", name: "Interest", color: "#f03bbd" },
         ]}
       />
       <DataTable

@@ -3,7 +3,7 @@ export default function StatCard({ label, value, highlight, sub }) {
     <div
       className={`rounded-2xl p-4 border transition-colors ${
         highlight
-          ? "bg-[var(--accent-gradient)] border-transparent shadow-[0_8px_24px_-8px_rgba(124,92,255,0.45)]"
+          ? "bg-[var(--accent-gradient)] border-transparent shadow-[0_8px_24px_-8px_rgba(159,95,229,0.45)]"
           : "bg-[var(--surface)] border-[var(--border)]"
       }`}
     >

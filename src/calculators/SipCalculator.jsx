@@ -56,7 +56,7 @@ export default function SipCalculator() {
         title="Year-wise Growth"
         series={result.series}
         lines={[
-          { key: "invested", name: "Invested", color: "#22d3ee" },
+          { key: "invested", name: "Invested", color: "#ffc24b" },
           { key: "total", name: "Total Value", color: "var(--accent)" },
         ]}
       />

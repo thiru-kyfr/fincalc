@@ -11,8 +11,8 @@ export default function Logo({ size = 28 }) {
       />
       <defs>
         <linearGradient id="ktools-logo-g" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#7C5CFF" />
-          <stop offset="1" stopColor="#C24BFF" />
+          <stop stopColor="#9F5FE5" />
+          <stop offset="1" stopColor="#F03BBD" />
         </linearGradient>
       </defs>
     </svg>
