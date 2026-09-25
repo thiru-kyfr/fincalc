@@ -58,10 +58,6 @@ export default function Home() {
       />
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 md:px-6 pt-16 pb-10 text-center">
-        <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[var(--accent)] font-semibold bg-[var(--accent-soft)] border border-[var(--accent)]/25 rounded-full px-3 py-1 mb-6">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
-          Free Tools · No Account Needed
-        </div>
         <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight mb-4">
           <span className="bg-gradient-to-br from-white via-white to-[var(--text-secondary)] bg-clip-text text-transparent">
             Money math,
