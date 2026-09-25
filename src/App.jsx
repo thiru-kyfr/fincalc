@@ -16,7 +16,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 md:px-6 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-[var(--text-secondary)] text-sm">
             <Logo size={20} />
-            <span className="font-display font-semibold text-[var(--text-primary)]">Ktools</span>
+            <span className="font-display font-semibold text-[var(--text-primary)]">KYFR Tools</span>
           </div>
           <p className="text-xs text-[var(--text-muted)] max-w-md">
             Free financial calculators for India. Formulas are standard, publicly documented calculations — not

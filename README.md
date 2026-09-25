@@ -1,4 +1,4 @@
-# Ktools
+# KYFR Tools
 
 31 free Indian financial calculators — SIP, EMI, tax, FD, PPF, and more — built with React, Vite, and Tailwind CSS.
 

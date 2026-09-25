@@ -7,14 +7,14 @@ import { useMeta, SITE_URL } from "../hooks/useMeta";
 export default function Home() {
   useMeta({
     title: null,
-    description: "Ktools — 31 free financial calculators for India. SIP, EMI, tax, FD, PPF and more.",
+    description: "KYFR Tools — 31 free financial calculators for India. SIP, EMI, tax, FD, PPF and more.",
     path: "/",
     jsonLd: {
       "@context": "https://schema.org",
       "@graph": [
         {
           "@type": "WebSite",
-          name: "Ktools",
+          name: "KYFR Tools",
           url: SITE_URL,
           description: "31 free financial calculators for India — SIP, EMI, tax, FD, PPF and more.",
         },
@@ -49,7 +49,13 @@ export default function Home() {
   const showPopular = category === "All" && !query;
 
   return (
-    <div>
+    <div className="relative overflow-hidden">
+      <img
+        src="/logo.png"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute -right-16 -top-6 w-[340px] h-[340px] opacity-[0.05] grayscale contrast-125 -z-10"
+      />
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 md:px-6 pt-16 pb-10 text-center">
         <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[var(--accent)] font-semibold bg-[var(--accent-soft)] border border-[var(--accent)]/25 rounded-full px-3 py-1 mb-6">

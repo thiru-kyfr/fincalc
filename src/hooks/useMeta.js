@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 export const SITE_URL = "https://fincalc-red.vercel.app";
-const SITE_NAME = "Ktools";
+const SITE_NAME = "KYFR Tools";
 
 function setMetaTag(attr, key, content) {
   if (!content) return;
